@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ph Tube</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
+
 <body>
-    <h1>ph tube</h1>
+    <header>
+        <nav class="w-11/12 mx-auto flex justify-between border-b-2 py-5 mt-1 border-[#17171733]">
+            <div class="logo">
+                <img class="w-[131px] border-dashed border-2 border-[#17171733] " src="assets/Logo.png" alt="">
+            </div>
+            <div class="sort">
+                <button class="btn">Sort by view</button>
+            </div>
+            <div class="blog">
+                <button class="btn bg-[#FF1F3D] text-white">Blog</button>
+            </div>
+    
+        </nav>
+    </header>
+    <nav id="category-container" class="flex py-5 justify-center gap-5">
+        <div>
+            <button class="btn btn-sm bg-[#FF1F3D] text-white">All</button>
+        </div>
+        
+    </nav>
+    
+<script src="script/index.js"></script>
 </body>
+
 </html>
