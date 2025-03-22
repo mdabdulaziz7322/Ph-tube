@@ -8,6 +8,13 @@
 
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+        .active{
+            background: #FF1F3D;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -22,22 +29,28 @@
             <div class="blog">
                 <button class="btn bg-[#FF1F3D] text-white">Blog</button>
             </div>
-    
+
         </nav>
     </header>
     <nav id="category-container" class="flex py-5 justify-center gap-5">
         <div>
 
-            <button onclick="loadVideos()" class="btn btn-sm bg-[#FF1F3D] text-white">All</button>
+            <button id="btn-all" onclick="loadVideos()" class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white">All</button>
         </div>
-        
+
     </nav>
-
-    <section id="video-container" class="w-11/12 grid grid-cols-4 mx-auto gap-5">
-
-    </section>
+    <div class="bg-[url('/assets/video_streaming_solutions_banner_1920px.jpg')] h-150 w-11/12 bg-cover bg-center mx-auto" id="hero">
+        <div class="px-40 py-50 p-5">
+        <h1 class="text-white text-4xl font-normal mb-5">Welcome to</h1>
+        <h1 class="text-white text-8xl font-bold "> PH TUBE</h1>
+        </div>
+    </div>
     
-<script src="script/index.js"></script>
+    <section id="video-container" class="w-11/12 grid grid-cols-4 mx-auto gap-5">
+        
+    </section>
+
+    <script src="script/index.js"></script>
 </body>
 
 

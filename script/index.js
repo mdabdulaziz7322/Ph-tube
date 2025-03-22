@@ -1,3 +1,12 @@
+
+function removeActiveClass(){
+  const activeButtons = document.getElementsByClassName("active");
+  for(let btn of activeButtons){
+    btn.classList.remove("active");
+  }
+}
+
+
 function loadCategory(){
     fetch("https://openapi.programming-hero.com/api/phero-tube/categories")
     .then((res)=> res.json())
@@ -9,7 +18,7 @@ const categoryContainer = document.getElementById("category-container");
 for(let cat of categories){
     const categoryDiv = document.createElement("div");
     categoryDiv.innerHTML= `
-    <button onclick="loadCategoryVideos(${cat.category_id})" class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white ">${cat.category}</button>
+    <button id= "${cat.category_id}" onclick="loadCategoryVideos(${cat.category_id})" class="btn btn-sm hover:bg-[#FF1F3D] hover:text-white ">${cat.category}</button>
     `;
     categoryContainer.appendChild(categoryDiv);
 
@@ -20,21 +29,41 @@ loadCategory();
 function loadVideos(){
     fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
     .then((res)=> res.json())
-    .then((data)=> displayVideos(data.videos));
+    .then((data)=> {
+      document.getElementById("btn-all").classList.add("active")
+      displayVideos(data.videos)
+    
+    });
 }
 
 const loadCategoryVideos = (id) => {
   const url = `https://openapi.programming-hero.com/api/phero-tube/category/${id}`;
-  console.log(url)
   fetch(url)
   .then((res)=> res.json())
-  .then((data) => displayVideos(data.category))
+  .then((data) => {
+    removeActiveClass();
+    const clickedButton = document.getElementById(`${id}`);
+    clickedButton.classList.add("active");
+    displayVideos(data.category)
+  })
+  
   }
   
 
 const displayVideos=(videos)=>{
 const videoContainer = document.getElementById("video-container");
 videoContainer.innerHTML = "";
+const hero = document.getElementById("hero");
+hero.style.display= " none";
+if(videos.length == 0){
+  videoContainer.innerHTML =`
+  <div class="col-span-full flex flex-col justify-center items-center gap-3 py-20">
+            <img class="w-[130px]" src="assets/Icon.png" alt="">
+            <h2 class="text-2xl font-bold">Oops!! Sorry, There is no content here</h2>
+        </div>
+  `
+ return; 
+}
 videos.forEach(video=>{
     const videoCard = document.createElement("div");
     videoCard.innerHTML = `
